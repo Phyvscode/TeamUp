@@ -4,7 +4,6 @@ import Conversation from '../models/Conversation';
 import User         from '../models/User';
 import Notification from '../models/Notification';
 
-// ── Helper ────────────────────────────────────────────────────────────────────
 const fmtTime = (date: Date | string): string =>
   new Date(date).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
 
@@ -61,7 +60,6 @@ const shapeConversation = (conv: IConversation, currentUser: IUser): ShapedConve
   };
 };
 
-// ── GET /api/messages ─────────────────────────────────────────────────────────
 export const getConversations = async (
   req: Request,
   res: Response,
@@ -78,7 +76,6 @@ export const getConversations = async (
   }
 };
 
-// ── POST /api/messages ────────────────────────────────────────────────────────
 export const sendMessage = async (
   req: Request<{}, {}, SendMessageBody>,
   res: Response,
@@ -137,7 +134,6 @@ export const sendMessage = async (
   }
 };
 
-// ── PATCH /api/messages/:conversationId/read ──────────────────────────────────
 export const markAsRead = async (
   req: Request<{ conversationId: string }>,
   res: Response,
@@ -163,7 +159,6 @@ export const markAsRead = async (
   }
 };
 
-// ── DELETE /api/messages/:conversationId ──────────────────────────────────────
 export const deleteConversation = async (
   req: Request<{ conversationId: string }>,
   res: Response,

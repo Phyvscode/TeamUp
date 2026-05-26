@@ -8,7 +8,6 @@ import {
 import Application  from '../models/Application';
 import Notification from '../models/Notification';
 
-// ── GET /api/applications ─────────────────────────────────────────────────────
 export const getApplications = async (
   req: Request,
   res: Response,
@@ -27,7 +26,6 @@ export const getApplications = async (
   }
 };
 
-// ── POST /api/applications ────────────────────────────────────────────────────
 export const createApplication = async (
   req: Request<{}, {}, CreateApplicationBody>,
   res: Response,
@@ -72,7 +70,6 @@ export const createApplication = async (
   }
 };
 
-// ── PATCH /api/applications/:id/status ───────────────────────────────────────
 export const updateStatus = async (
   req: Request<{ id: string }, {}, UpdateStatusBody>,
   res: Response,
@@ -98,11 +95,10 @@ export const updateStatus = async (
       return;
     }
 
-    // Use plain object + keyof cast to satisfy strict index typing
     const statusMessages: Partial<Record<ApplicationStatus, string>> = {
       reviewing: 'Your application is now under review. We will be in touch soon.',
       interview: 'Great news! You have been shortlisted for an interview.',
-      offered:   '🎉 Congratulations! You have received a job offer.',
+      offered:   'Congratulations! You have received a job offer.',
       rejected:  'Thank you for your interest. Unfortunately you were not selected this time.',
     };
 
@@ -129,7 +125,6 @@ export const updateStatus = async (
   }
 };
 
-// ── DELETE /api/applications/:id ─────────────────────────────────────────────
 export const deleteApplication = async (
   req: Request<{ id: string }>,
   res: Response,

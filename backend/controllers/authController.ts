@@ -7,7 +7,6 @@ import { IUser, SignupBody, LoginBody } from '../types';
 import User          from '../models/User';
 import PasswordReset from '../models/PasswordReset';
 
-// ── Helper ────────────────────────────────────────────────────────────────────
 const signToken = (id: string): string => {
   const secret  = process.env.JWT_SECRET as string;
   const options: SignOptions = {
@@ -21,7 +20,6 @@ const sendAuthResponse = (res: Response, statusCode: number, user: IUser): void 
   res.status(statusCode).json({ token, user });
 };
 
-// ── POST /api/auth/signup ─────────────────────────────────────────────────────
 export const signup = async (
   req: Request<{}, {}, SignupBody>,
   res: Response,
@@ -52,7 +50,6 @@ export const signup = async (
   }
 };
 
-// ── POST /api/auth/login ──────────────────────────────────────────────────────
 export const login = async (
   req: Request<{}, {}, LoginBody>,
   res: Response,
@@ -79,7 +76,6 @@ export const login = async (
   }
 };
 
-// ── GET /api/auth/me ──────────────────────────────────────────────────────────
 export const getMe = async (
   req: Request,
   res: Response,
@@ -93,7 +89,6 @@ export const getMe = async (
   }
 };
 
-// ── POST /api/auth/forgot-password ────────────────────────────────────────────
 export const forgotPassword = async (
   req: Request<{}, {}, { email: string }>,
   res: Response,
@@ -152,7 +147,6 @@ export const forgotPassword = async (
   }
 };
 
-// ── POST /api/auth/verify-reset-code ─────────────────────────────────────────
 export const verifyResetCode = async (
   req: Request<{}, {}, { email: string; code: string }>,
   res: Response,
@@ -223,7 +217,6 @@ export const verifyResetCode = async (
   }
 };
 
-// ── POST /api/auth/reset-password ─────────────────────────────────────────────
 export const resetPassword = async (
   req: Request<{}, {}, { resetToken: string; newPassword: string }>,
   res: Response,

@@ -3,7 +3,6 @@ import { INotification, NotificationType } from '../types';
 import Notification from '../models/Notification';
 import User         from '../models/User';
 
-// ── GET /api/notifications ────────────────────────────────────────────────────
 export const getNotifications = async (
   req: Request,
   res: Response,
@@ -19,7 +18,6 @@ export const getNotifications = async (
   }
 };
 
-// ── POST /api/notifications/send ─────────────────────────────────────────────
 export const sendNotification = async (
   req: Request<{}, {}, { recipientId: string; title: string; message: string; type?: NotificationType }>,
   res: Response,
@@ -54,7 +52,6 @@ export const sendNotification = async (
   }
 };
 
-// ── PATCH /api/notifications/read ─────────────────────────────────────────────
 export const markAllRead = async (
   req: Request,
   res: Response,
@@ -68,7 +65,6 @@ export const markAllRead = async (
   }
 };
 
-// ── PATCH /api/notifications/:id/read ────────────────────────────────────────
 export const markOneRead = async (
   req: Request<{ id: string }>,
   res: Response,
@@ -90,7 +86,6 @@ export const markOneRead = async (
   }
 };
 
-// ── DELETE /api/notifications/:id ────────────────────────────────────────────
 export const deleteNotification = async (
   req: Request<{ id: string }>,
   res: Response,
@@ -111,7 +106,6 @@ export const deleteNotification = async (
   }
 };
 
-// ── GET /api/notifications/unread-count ──────────────────────────────────────
 export const getUnreadCount = async (
   req: Request,
   res: Response,

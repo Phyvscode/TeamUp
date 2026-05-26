@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs';
 import { IUser, IProject } from '../types';
 import User from '../models/User';
 
-// ── GET /api/profile ──────────────────────────────────────────────────────────
 export const getProfile = async (
   req: Request,
   res: Response,
@@ -17,7 +16,6 @@ export const getProfile = async (
   }
 };
 
-// ── PUT /api/profile ──────────────────────────────────────────────────────────
 export const updateProfile = async (
   req: Request<{}, {}, {
     name?: string; email?: string; phone?: string; location?: string;
@@ -57,7 +55,6 @@ export const updateProfile = async (
   }
 };
 
-// ── POST /api/profile/avatar ──────────────────────────────────────────────────
 export const uploadAvatar = async (
   req: Request,
   res: Response,
@@ -79,7 +76,6 @@ export const uploadAvatar = async (
   }
 };
 
-// ── POST /api/profile/company-logo ───────────────────────────────────────────
 export const uploadCompanyLogo = async (
   req: Request,
   res: Response,
@@ -101,7 +97,6 @@ export const uploadCompanyLogo = async (
   }
 };
 
-// ── POST /api/profile/resume ──────────────────────────────────────────────────
 export const uploadResume = async (
   req: Request,
   res: Response,
@@ -123,7 +118,6 @@ export const uploadResume = async (
   }
 };
 
-// ── POST /api/profile/change-password ────────────────────────────────────────
 export const changePassword = async (
   req: Request<{}, {}, { currentPassword: string; newPassword: string }>,
   res: Response,
@@ -160,7 +154,6 @@ export const changePassword = async (
   }
 };
 
-// ── POST /api/profile/projects ────────────────────────────────────────────────
 export const addProject = async (
   req: Request<{}, {}, Omit<IProject, '_id'>>,
   res: Response,
@@ -183,7 +176,6 @@ export const addProject = async (
   }
 };
 
-// ── DELETE /api/profile/projects/:projectId ───────────────────────────────────
 export const deleteProject = async (
   req: Request<{ projectId: string }>,
   res: Response,

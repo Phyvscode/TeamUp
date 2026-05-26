@@ -3,7 +3,6 @@ import { IInterview, CreateInterviewBody, UpdateInterviewBody } from '../types';
 import Interview    from '../models/Interview';
 import Notification from '../models/Notification';
 
-// ── GET /api/interviews ───────────────────────────────────────────────────────
 export const getInterviews = async (
   req: Request,
   res: Response,
@@ -22,7 +21,6 @@ export const getInterviews = async (
   }
 };
 
-// ── POST /api/interviews ──────────────────────────────────────────────────────
 export const createInterview = async (
   req: Request<{}, {}, CreateInterviewBody>,
   res: Response,
@@ -56,10 +54,10 @@ export const createInterview = async (
     await Notification.send({
       recipient: applicantId,
       sender:    req.user._id,
-      title:     '🗓️ Interview Confirmed!',
+      title:     'Interview Confirmed!',
       message:
         `Your interview for ${position} at ${company} has been confirmed.\n` +
-        `📅 Date: ${date}\n🕐 Time: ${time}\n👤 Recruiter: ${req.user.name}` +
+        `Date: ${date}\nTime: ${time}\n👤 Recruiter: ${req.user.name}` +
         linkLine +
         `\n\nPlease be ready a few minutes before your scheduled time. Good luck!`,
       type: 'interview',
@@ -71,7 +69,6 @@ export const createInterview = async (
   }
 };
 
-// ── PATCH /api/interviews/:id ─────────────────────────────────────────────────
 export const updateInterview = async (
   req: Request<{ id: string }, {}, UpdateInterviewBody>,
   res: Response,
@@ -116,7 +113,7 @@ export const updateInterview = async (
       await Notification.send({
         recipient: interview.applicant,
         sender:    req.user._id,
-        title:     '✅ Interview Completed',
+        title:     'Interview Completed',
         message:   `Your interview for ${interview.position} at ${interview.company} has been marked as completed by ${req.user.name}. We will be in touch soon!`,
         type:      'success',
       });
@@ -124,19 +121,19 @@ export const updateInterview = async (
       await Notification.send({
         recipient: interview.applicant,
         sender:    req.user._id,
-        title:     '📅 Interview Rescheduled',
+        title:     'Interview Rescheduled',
         message:
           `Your interview for ${interview.position} at ${interview.company} has been rescheduled.\n` +
-          `📅 New Date: ${updates.date || interview.date}\n` +
-          `🕐 New Time: ${updates.time || interview.time}\n` +
-          `👤 Recruiter: ${req.user.name}`,
+          `New Date: ${updates.date || interview.date}\n` +
+          `New Time: ${updates.time || interview.time}\n` +
+          `Recruiter: ${req.user.name}`,
         type: 'interview',
       });
     } else if (meetingLink) {
       await Notification.send({
         recipient: interview.applicant,
         sender:    req.user._id,
-        title:     '🔗 Interview Link Updated',
+        title:     'Interview Link Updated',
         message:
           `The meeting link for your ${interview.position} interview at ${interview.company} ` +
           `(${interview.date} at ${interview.time}) has been updated.\n\nMeeting link: ${meetingLink}`,
@@ -150,7 +147,6 @@ export const updateInterview = async (
   }
 };
 
-// ── DELETE /api/interviews/:id ────────────────────────────────────────────────
 export const deleteInterview = async (
   req: Request<{ id: string }>,
   res: Response,
