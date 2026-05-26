@@ -24,7 +24,7 @@ const RoleSelection = () => {
           className="text-center mb-12"
         >
           <h1 className="text-5xl font-bold font-display mb-4">
-            <span className="text-gradient-orange">HireFlow</span>
+            <span className="text-gradient-orange">Teamed</span>
           </h1>
           <p className="text-muted-foreground text-lg">
             Your gateway to seamless hiring and job applications
